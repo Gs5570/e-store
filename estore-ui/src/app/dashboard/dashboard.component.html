@@ -1,0 +1,17 @@
+<main class="router-outlet">
+  <app-product-search></app-product-search>
+
+  <h2>Available Products</h2>
+  <div class="product-list">
+    <div *ngFor="let storeProduct of storeProducts" class="product-item">
+      <!-- <div class="image-placeholder">&nbsp;</div> -->
+      <img [src]="storeProduct.image" />
+      <div class="product-info">
+        <a routerLink="/detail/{{ storeProduct.id }}">
+          {{ storeProduct.name }}
+        </a>
+        <p>${{ storeProduct.price.toFixed(2) }}</p>
+      </div>
+    </div>
+  </div>
+</main>

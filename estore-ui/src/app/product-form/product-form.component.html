@@ -1,0 +1,58 @@
+<div class="container">
+  <div [hidden]="submitted">
+    <h1>product Form</h1>
+    <form (ngSubmit)="onSubmit()" #productForm="ngForm">
+      <div class="form-group">
+        <label for="name">Product Name</label>
+        <input type="text" class="form-control" id="name"
+               required
+               [(ngModel)]="model.name" name="name"
+               #name="ngModel">
+        <div [hidden]="name.valid || name.pristine"
+             class="alert alert-danger">
+          Name is required
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="quantity">Product Quantity</label>
+        <input type="text" class="form-control" id="quantity"
+               [(ngModel)]="model.quantity" name="quantity">
+      </div>
+
+      <div class="form-group">
+        <label for="price">product price</label>
+        <select class="form-control" id="price"
+                required
+                [(ngModel)]="model.price" name="price"
+                #quantity="ngModel">
+          <option *ngFor="let prc of price" [value]="prc">{{prc}}</option>
+        </select>
+        <div [hidden]="quantity.valid || quantity.pristine" class="alert alert-danger">
+          quantity is required
+        </div>
+      </div>
+
+      <button type="submit" class="btn btn-success" [disabled]="!productForm.form.valid">Submit</button>
+      <button type="button" class="btn btn-default" (click)="newProductForm(); productForm.reset()">New product</button>
+    </form>
+  </div>
+
+  <div [hidden]="!submitted">
+    <h2>You submitted the following:</h2>
+    <div class="row">
+      <div class="col-xs-3">Name</div>
+      <div class="col-xs-9">{{ model.name }}</div>
+    </div>
+    <div class="row">
+      <div class="col-xs-3">Quantity</div>
+      <div class="col-xs-9">{{ model.quantity }}</div>
+    </div>
+    <div class="row">
+      <div class="col-xs-3">price</div>
+      <div class="col-xs-9">{{ model.price }}</div>
+    </div>
+    <br>
+    <button type="button" class="btn btn-primary" (click)="submitted=false">Edit</button>
+  </div>
+</div>

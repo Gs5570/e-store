@@ -1,0 +1,28 @@
+
+.shirt {
+  position: sticky;
+  top: var(--pad);
+
+  --mask-image: url(/assets/img/mockups/tshirt.png);
+
+  .mask-overlay {
+    background-color: var(--shirt-color);
+    position: absolute;
+    mask-image: var(--mask-image);
+    mask-size: contain;
+    mask-repeat: no-repeat;
+    inset: 0;
+    mix-blend-mode: multiply;
+  }
+}
+
+#print-overlay {
+  --insetPrintOverlay: 30%;
+  --topPrintOverlay: 4rem;
+
+
+  position: absolute;
+  z-index: 1;
+  inset: var(--insetPrintOverlay);
+  top: var(--topPrintOverlay);
+}

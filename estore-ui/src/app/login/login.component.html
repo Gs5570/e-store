@@ -1,0 +1,9 @@
+<div id="login-container" (keyup.enter)="userName != '' ? newUser() : ''">
+  <label for="user-name"
+    ><span>User name</span>
+    <input type="text" [(ngModel)]="userName" name="user-name"
+  /></label>
+  <button class="button" (click)="newUser()" [disabled]="userName == ''">
+    Login
+  </button>
+</div>

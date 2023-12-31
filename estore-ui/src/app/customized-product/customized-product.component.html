@@ -1,0 +1,15 @@
+<div class="shirt" [style.--shirt-color]="productColor">
+  <img [src]="apparelMockups[productType].src" />
+  <div
+    class="mask-overlay"
+    [style.--mask-image]="'url(\'' + apparelMockups[productType].src + '\')'"
+  ></div>
+  <div
+    *ngIf="productImage !== ''"
+    id="print-overlay"
+    [style.--insetPrintOverlay]="apparelMockups[productType].inset"
+    [style.--topPrintOverlay]="apparelMockups[productType].top"
+  >
+    <img [src]="imagePath()" onerror="this.style.display='none'" />
+  </div>
+</div>

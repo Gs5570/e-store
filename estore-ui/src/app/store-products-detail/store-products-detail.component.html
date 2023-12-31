@@ -1,0 +1,116 @@
+<main class="router-outlet">
+  <a (click)="goBack()" class="back-link">Back to list</a>
+  <div *ngIf="storeProduct">
+    <div class="product-details">
+      <div *ngIf="mainPicture == ''" class="image-placeholder"></div>
+      <img
+        class="product-image"
+        *ngIf="storeProduct.image != ''"
+        [src]="storeProduct.image"
+      />
+      <div class="textual-details">
+        <p class="product-name">{{ storeProduct.name }}</p>
+        <p class="product-price">${{ storeProduct.price.toFixed(2) }}</p>
+        <p class="product-description">
+          {{ storeProduct.description }}
+        </p>
+      </div>
+      <div class="customizations">
+        <h3>Customize your product</h3>
+
+        <div class="product-size">
+          <h4>Size</h4>
+          <div class="size-options">
+            <label
+              [for]="'size-' + size"
+              *ngFor="let size of apparelMockups[storeProduct.type].sizes"
+            >
+              <input
+                type="radio"
+                [id]="'size-' + size"
+                [value]="size"
+                name="apparel-size"
+                [(ngModel)]="productSize"
+              />
+              <span>{{ size }}</span>
+            </label>
+          </div>
+        </div>
+
+        <div class="preview">
+          <app-customized-product
+            [productType]="storeProduct.type"
+            [productColor]="productColor"
+            [productImage]="base64CustomPrint"
+          ></app-customized-product>
+        </div>
+
+        <div class="print-picker">
+          <h4>Print</h4>
+          <div
+            class="custom-print-cell"
+            *ngFor="let customPrintSrc of customPrintList; index as i"
+          >
+            <label [for]="'customPrintRadio' + i">
+              <input
+                name="custom-print-picker"
+                type="radio"
+                [id]="'customPrintRadio' + i"
+                [value]="customPrintSrc"
+                [(ngModel)]="customPrint"
+                (change)="getBase64(i)"
+              />
+              <div class="print-img-container">
+                <img [id]="'custom-print-' + i" [src]="customPrintSrc" />
+              </div>
+            </label>
+          </div>
+          <div
+            class="custom-print-cell add-custom-print"
+            (click)="setupImgUpload()"
+          >
+            <span>Add custom print</span>
+          </div>
+
+          <div *ngIf="pendingImgUpload" id="pending-img-upload">
+            <h5>Select an image for your custom print design</h5>
+            <input type="file" id="newImg" (change)="fakeFileUpload($event)" />
+          </div>
+        </div>
+
+        <div class="color-picker">
+          <h4>Color</h4>
+          <label
+            *ngFor="let item of colorCodes | keyvalue"
+            [style.--product-color]="item.value"
+            [for]="item.key"
+          >
+            <input
+              type="radio"
+              [id]="item.key"
+              name="color"
+              [(ngModel)]="productColor"
+              [value]="item.value"
+            />
+            <span>{{ item.key }}</span>
+          </label>
+        </div>
+      </div>
+    </div>
+    <a>
+      <button
+        class="button"
+        (click)="
+          purchase(
+            productColor,
+            productSize,
+            base64CustomPrint,
+            userService.userID
+          )
+        "
+      >
+        Purchase this product
+      </button>
+    </a>
+  </div>
+</main>

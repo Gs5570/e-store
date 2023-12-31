@@ -1,0 +1,67 @@
+/* You can add global styles to this file, and also import other style files */
+@import './reset.css';
+@import url('https://fonts.googleapis.com/css2?family=Finlandica:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+
+* {
+  font-family: 'Finlandica', sans-serif;
+}
+
+body, html {
+  height: 100%;
+}
+
+:root {
+  --u: 1rem;
+  --w: 960px;
+
+  --br: 0.125rem;
+
+  --mod: 8rem;
+
+  --pad-scale: 2;
+  --pad: var(--u);
+  --pad--1: calc(var(--pad) / var(--pad-scale));
+  --pad--2: calc(var(--pad--1) / var(--pad-scale));
+  --pad-1: calc(var(--pad) * var(--pad-scale));
+  --pad-2: calc(var(--pad-1) * var(--pad-scale));
+
+
+  --font-scale: 1.2;
+  --fs-0: 1rem;
+  --fs--1: calc(var(--fs-0) / var(--font-scale));
+  --fs--2: calc(var(--fs--1) / var(--font-scale));
+  --fs-1: calc(var(--fs-0) * var(--font-scale));
+  --fs-2: calc(var(--fs-1) * var(--font-scale));
+  --fs-3: calc(var(--fs-2) * var(--font-scale));
+  --fs-4: calc(var(--fs-3) * var(--font-scale));
+  --fs-5: calc(var(--fs-4) * var(--font-scale));
+
+  --gray: #ccc;
+  --lightgray: #eee;
+  --primary: #3e3ee7;
+  --brand-color: #ffdb3e;
+}
+
+.button {
+  padding: var(--pad--1);
+  border: 2px solid var(--primary);
+  border-radius: calc(var(--br)*2);
+  background-color: var(--primary);
+  color: white;
+  font-size: var(--fs-0);
+  font-weight: bold;
+  cursor: pointer;
+  &:disabled {
+    opacity: 0.3;
+    cursor: not-allowed;
+  }
+  &:hover:not(:disabled) {
+    background-color: white;
+    color: var(--primary);
+  }
+}
+
+main.router-outlet {
+  padding: var(--pad-2) max(var(--pad), 50vw - var(--w)/2);
+  width: 100vw;
+}

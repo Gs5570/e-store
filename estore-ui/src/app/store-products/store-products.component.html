@@ -1,0 +1,44 @@
+<!-- <h2>{{storeProduct.name | uppercase}} Details</h2>
+<div><span>id: </span>{{storeProduct.id}}</div>
+<div>
+    <label for="name">Product name: </label>
+    <input id="name" [(ngModel)]="storeProduct.name" placeholder="name">
+  </div> -->
+
+  
+<h2>My Produtcs</h2>
+
+<div>
+    <label for="new-storeProduct">StoreProduct name: </label>
+    <input id="new-storeProduct" #storeProductName />
+    <label for="new-storeProduct">StoreProduct price: </label>
+    <input id="new-storeProduct" #storeProductPrice />
+    <label for="new-storeProduct">StoreProduct quantity: </label>
+    <input id="new-storeProduct" #storeProductQuantity />
+    <label for="new-storeProduct">StoreProduct id: </label>
+    <input id="new-storeProduct" #storeProductId />
+  
+    <!-- (click) passes input value to add() and then clears the input -->
+    <button type="button" class="add-button" (click)="add( storeProductId.value,storeProductName.value, storeProductPrice.value, storeProductQuantity.value ); storeProductName.value=''";>
+      Add storeProduct
+    </button>
+  </div>
+
+<ul class="products">
+    <!-- The *ngFor is Angular's repeater directive. It repeats the host element for each element in a list. -->
+    <!-- storeProduct Holds the current product object for each iteration through the list. -->
+  <li *ngFor="let storeProduct of storeProducts">
+    <!-- <button type="button" (click)="onSelect(storeProduct)" [class.selected]="storeProduct === selectedStoreProduct"> -->
+      <a routerLink="/detail/{{storeProduct.id}}">
+        <span class="badge">{{storeProduct.id}}</span> {{storeProduct.name}}
+      </a>
+
+    <!-- </button> -->
+    <button type="button" class="delete" title="delete storeProduct"
+      (click)="delete(storeProduct)">x</button>
+  </li>
+</ul>
+
+<app-store-products-detail [storeProduct]="selectedStoreProduct"></app-store-products-detail>
+
+<!-- <app-store-products-detail [storeProduct]="selectedStoreProduct"></app-store-products-detail> -->

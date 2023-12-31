@@ -1,0 +1,28 @@
+#login-container {
+  padding: var(--pad-1);
+  background-color: white;
+  min-width: calc(3*var(--mod));
+  display: flex;
+  flex-direction: column;
+  gap: var(--pad-1);
+  box-shadow: 0 4px 10px var(--gray);
+  border-radius: calc(3*var(--br));
+}
+
+label {
+  display: flex;
+  flex-direction: column;
+  gap: var(--pad--1);
+  font-size: var(--fs-1);
+}
+
+input[type="text"] {
+  padding: var(--pad--1);
+  font-family: monospace;
+  font-size: var(--fs-0);
+}
+
+.button{
+  width: 20%;
+  margin: auto;
+}

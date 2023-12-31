@@ -1,0 +1,102 @@
+<main class="router-outlet">
+  <h2>Product inventory</h2>
+  <ul id="inventory">
+    <li *ngFor="let product of inventory; let i = index">
+      <div class="first-row">
+        <span class="product-id prod-field">
+          <label>ID</label>
+          {{ product.id }}</span
+        >
+        <span class="product-name prod-field">
+          <label [for]="'prod-name' + i">Name</label
+          ><input
+            type="text"
+            [(ngModel)]="product.name"
+            (change)="this.unsavedChanges[i] = true"
+            [id]="'prod-name' + i"
+            required
+        /></span>
+        <span class="product-price prod-field"
+          ><label [for]="'prod-price' + i">Price</label>
+          <input
+            type="number"
+            [(ngModel)]="product.price"
+            (change)="this.unsavedChanges[i] = true"
+            min="0"
+            [id]="'prod-price' + i"
+            step="any"
+            required
+        /></span>
+        <span class="product-quantity prod-field"
+          ><label [for]="'prod-quantity' + i">Quantity</label
+          ><input
+            type="number"
+            min="0"
+            [(ngModel)]="product.quantity"
+            (change)="this.unsavedChanges[i] = true"
+            [id]="'prod-quantity' + i"
+            required
+        /></span>
+        <span class="actions">
+          <button
+            (click)="save(i)"
+            [disabled]="this.unsavedChanges[i] == false"
+            class="button"
+          >
+            Save
+          </button>
+          <button (click)="delete(i)" class="button">Delete</button>
+        </span>
+      </div>
+      <div class="second-row">
+        <span>&nbsp;</span>
+
+        <span class="product-description prod-field"
+          ><label [for]="'prod-description' + i">Description</label>
+          <textarea
+            [id]="'prod-description' + i"
+            [(ngModel)]="product.description"
+            (change)="this.unsavedChanges[i] = true"
+          ></textarea>
+        </span>
+
+        <span class="product-img prod-field">
+          <label [for]="'prod-img' + i">Main image</label>
+          <input
+            type="text"
+            [(ngModel)]="product.image"
+            (change)="this.unsavedChanges[i] = true"
+            [id]="'prod-name' + i"
+          />
+        </span>
+
+        <span class="product-type prod-field">
+          <label [for]="'prod-type' + i">Type</label>
+          <div class="select-container">
+            <select
+              [id]="'prod-type' + i"
+              [(ngModel)]="product.type"
+              (change)="this.unsavedChanges[i] = true"
+            >
+              <option *ngFor="let pT of productTypes" [ngValue]="pT">
+                {{ pT }}
+              </option>
+            </select>
+            <svg>
+              <use xlink:href="#select-arrow-down"></use>
+            </svg>
+          </div>
+        </span>
+      </div>
+    </li>
+    <li class="new-product">
+      <button class="button" (click)="new()">New Product</button>
+    </li>
+  </ul>
+
+  <svg class="sprites">
+    <symbol id="select-arrow-down" viewbox="0 0 10 6">
+      <polyline points="1 1 5 5 9 1"></polyline>
+    </symbol>
+  </svg>
+</main>

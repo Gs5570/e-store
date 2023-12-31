@@ -1,0 +1,140 @@
+#inventory {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--pad);
+  li {
+    
+    padding: var(--pad) var(--pad) var(--pad-1);
+    background: white;
+    border-radius: calc(4*var(--br));
+    box-shadow: 0 2px 5px rgb(0 0 0 / 20%);
+
+
+    display: flex;
+    flex-direction: column;
+    gap: var(--pad);
+    
+
+    &.new-product {
+      grid-template-columns: auto;
+    }
+
+    span {
+      padding: 0 var(--pad--1);
+      display: flex;
+      align-items: stretch;
+      &.product-id {
+        align-items: center;
+      }
+      &.actions {
+        gap: var(--pad--2);
+        align-items: flex-start;
+      }
+    }
+  }
+
+  label {
+    font-weight: bold;
+    font-size: var(--fs--1);
+    text-transform: uppercase;
+    letter-spacing: 0.03ch;
+  }
+
+  .prod-field {
+    display: flex;
+    flex-direction: column;
+    gap: var(--pad--2);
+  }
+
+  .first-row {
+    display: grid;
+    grid-template-columns: minmax(0,1fr) minmax(0,12fr) minmax(0,2fr) minmax(0,2fr) minmax(0,3fr);
+  }
+
+  .second-row {
+    display: grid;
+    grid-template-columns: minmax(0,1fr) minmax(0,7fr) minmax(0,4fr) minmax(0,5fr) minmax(0,3fr);
+  }
+  textarea {
+    min-height: calc(6*var(--pad));
+  }
+
+  input, textarea, select {
+    width: 100%;
+    padding: var(--pad--2) var(--pad--1);
+    min-height: var(--pad-1);
+    border: 1px solid var(--gray);
+    border-radius: 5px;
+    background: #fff;
+    box-shadow: 0 1px 3px -2px #9098a9;
+    &:invalid {
+      border-color: tomato;
+      border-width: 2px;
+    }
+  }
+
+  .new-product button[class="button"]{
+    width: 15%;
+    margin: auto;
+  }
+}
+
+.button {
+  padding: var(--pad--2) var(--pad--1);
+}
+
+
+
+// https://codepen.io/avstorm/pen/bPOgRO
+
+.select-container {
+  position: relative;
+  min-width: 200px;
+}
+.select-container svg {
+  position: absolute;
+  right: 12px;
+  top: calc(50% - 3px);
+  width: 10px;
+  height: 6px;
+  stroke-width: 2px;
+  stroke: #9098a9;
+  fill: none;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  pointer-events: none;
+}
+.select-container select {
+  -webkit-appearance: none;
+  width: 100%;
+  cursor: pointer;
+  font-family: inherit;
+  font-size: 16px;
+  transition: all 150ms ease;
+}
+.select-container select:required:invalid {
+  color: #5a667f;
+}
+.select-container select option {
+  color: #223254;
+}
+.select-container select option[value=""][disabled] {
+  display: none;
+}
+.select-container select:focus {
+  outline: none;
+  border-color: #07f;
+  box-shadow: 0 0 0 2px rgba(0,119,255,0.2);
+}
+.select-container select:hover + svg {
+  stroke: #07f;
+}
+.sprites {
+  position: absolute;
+  width: 0;
+  height: 0;
+  pointer-events: none;
+  user-select: none;
+}

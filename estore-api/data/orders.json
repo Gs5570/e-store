@@ -1,0 +1,28 @@
+[
+    {
+		"orderID": 1,
+		"userID": 1,
+		"items": [
+            {
+                "shoppingCartID": 1,
+                "productID": 4,
+                "color": "blue",
+                "size": "small",
+                "image": "dummy-image-3",
+                "userID": 1,
+                "shoppingCartQuantity": 2
+            },
+            {
+                "shoppingCartID": 2,
+                "productID": 4,
+                "color": "green",
+                "size": "medium",
+                "image": "dummy-image-4",
+                "userID": 1,
+                "shoppingCartQuantity": 1
+            }
+        ],
+		"orderDate": "11/09/2022",
+		"address": "Park Point, RIT"
+	}
+]

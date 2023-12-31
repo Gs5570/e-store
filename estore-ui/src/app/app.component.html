@@ -1,0 +1,47 @@
+<main>
+  <nav>
+    <h1>Flairable Store</h1>
+    <ul>
+      <ng-template [ngIf]="currentUser.id != -1">
+        <ng-template [ngIf]="currentUser.name == 'admin'">
+          <li>
+            <a routerLink="/inventory" routerLinkActive="active-link"
+              >Inventory</a
+            >
+          </li>
+        </ng-template>
+        <ng-template [ngIf]="currentUser.name != 'admin'">
+          <li>
+            <a routerLink="/products" routerLinkActive="active-link"
+              >Products</a
+            >
+          </li>
+          <li>
+            <a routerLink="/shopping-cart" routerLinkActive="active-link"
+              >Shopping cart</a
+            >
+          </li>
+        </ng-template>
+        <li class="user-nav">
+          Hi, {{ currentUser.name }}
+          <span class="admin-user" *ngIf="currentUser.name == 'admin'"
+            >superuser</span
+          >
+          <a (click)="signOut()">Sign out</a>
+        </li>
+      </ng-template>
+    </ul>
+  </nav>
+  <!-- <div><router-outlet></router-outlet></div> -->
+  <!-- <app-product-search></app-product-search>  -->
+  <!-- <app-store-products></app-store-products> -->
+  <!-- <router-outlet></router-outlet> -->
+  <!-- <app-messages></app-messages> -->
+  <!-- <app-product-form></app-product-form> -->
+
+  <div id="comp-container" [class.center]="url === 'sign-in'">
+    <router-outlet></router-outlet>
+  </div>
+
+  <footer>Flairable © 2022</footer>
+</main>

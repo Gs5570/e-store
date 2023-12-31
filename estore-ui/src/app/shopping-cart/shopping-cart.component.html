@@ -1,0 +1,61 @@
+<main class="router-outlet">
+  <h2>Shopping Cart</h2>
+  <ul id="Shopping" *ngIf="cartProduct.length > 0">
+    <li class="list-header">
+      <span></span>
+      <span>Product Details</span>
+      <span>Price</span>
+      <span>Quantity</span>
+      <span>Sub-total</span>
+      <span>Action</span>
+    </li>
+    <li *ngFor="let product of cartProduct; let i = index">
+      <app-customized-product
+        [productType]="product.type"
+        [productColor]="product.color"
+        [productImage]="product.image"
+      ></app-customized-product>
+
+      <span class="product-name">{{ product.name }} / {{ product.size }}</span>
+      <span class="product-price">{{ product.price | currency }} </span>
+      <span class="product-quantity"
+        ><input
+          type="number"
+          [(ngModel)]="product.shoppingCartQuantity"
+          (ngModelChange)="updateQuantity(i)"
+          max="{{ product.quantity }}"
+          min="1"
+          limit-to-max
+        />
+      </span>
+      <span>${{ subtotal(i) | number: "1.2-2" }}</span>
+      <span class="actions">
+        <button (click)="delete(i)" class="button" id="delete-btn">
+          Remove
+        </button>
+      </span>
+    </li>
+    <li>
+      <button class="button" (click)="goToCheckoutPage()">
+        Go to checkout
+      </button>
+      <button
+        (click)="clear()"
+        class="button clear-cart"
+        id="clearShoppingCart"
+        [disabled]="delete.length == 0"
+      >
+        Clear Cart
+      </button>
+    </li>
+  </ul>
+
+  <div *ngIf="cartProduct.length == 0">
+    <p class="empty-cart">
+      You currently have no products in your shopping cart.
+      <br />
+      Want to buy some products? Just click on
+      <a routerLink="/products">this link</a>.
+    </p>
+  </div>
+</main>

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/docs/design-doc.iml" filepath="$PROJECT_DIR$/docs/design-doc.iml" />
+      <module fileurl="file://$PROJECT_DIR$/estore-api/estore-api.iml" filepath="$PROJECT_DIR$/estore-api/estore-api.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/term-project-2221-swen-610-01-e-team5.iml" filepath="$PROJECT_DIR$/.idea/term-project-2221-swen-610-01-e-team5.iml" />
+    </modules>
+  </component>
+</project>
