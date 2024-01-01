@@ -9,7 +9,8 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 export class InventoryService {
   constructor(private http: HttpClient) {}
 
-  private APIUrl = 'http://localhost:8080/products';
+  // private APIUrl = 'http://localhost:8080/products';
+  private APIUrl = 'https://dainty-volcano-production.up.railway.app/products';
   httpOptions = {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
   };

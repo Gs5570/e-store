@@ -9,7 +9,9 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 export class ShoppingCartService {
   constructor(private http: HttpClient) {}
 
-  private APIUrl = 'http://localhost:8080/shoppingcart';
+  // private APIUrl = 'http://localhost:8080/shoppingcart';
+  private APIUrl =
+    'https://dainty-volcano-production.up.railway.app/shoppingcart';
   httpOptions = {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
   };

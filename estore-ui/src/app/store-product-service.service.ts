@@ -15,7 +15,9 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
   providedIn: 'root',
 })
 export class StoreProductServiceService {
-  private storeProductsUrl = 'http://localhost:8080/products'; // URL to web api
+  // private storeProductsUrl = 'http://localhost:8080/products'; // URL to web api
+  private storeProductsUrl =
+    'https://dainty-volcano-production.up.railway.app/products'; // URL to web api
 
   httpOptions = {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
@@ -102,7 +104,7 @@ export class StoreProductServiceService {
 
   /** PUT: update the hero on the server */
   updateStoreProduct(storeProduct: StoreProduct): Observable<any> {
-    console.log("update called");
+    console.log('update called');
     console.log(storeProduct);
     return this.http
       .put(this.storeProductsUrl, storeProduct, this.httpOptions)
